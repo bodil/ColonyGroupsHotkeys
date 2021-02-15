@@ -105,7 +105,7 @@ namespace ColonyGroupsHotkeys
                 Utils.Error("ColGrpHotkeys_msg_noSelection".Translate());
                 return;
             }
-            var removed = selectedPawns.Except(group.pawns);
+            var removed = selectedPawns.Except(group.pawns).ToList();
             foreach (var pawn in selectedPawns)
             {
                 group.Add(pawn);
