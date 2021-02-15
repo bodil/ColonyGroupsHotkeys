@@ -13,10 +13,7 @@ namespace ColonyGroupsHotkeys
     {
         // Modifier methods
 
-        public static TaggedString Translate(this Modifier mod)
-        {
-            return Utils.EnumTranslationKey(mod).Translate();
-        }
+        public static TaggedString Translate(this Modifier mod) => Utils.EnumTranslationKey(mod).Translate();
 
         public static bool MatchModifier(this Modifier mod, EventModifiers modifiers) => mod switch
         {
@@ -82,7 +79,7 @@ namespace ColonyGroupsHotkeys
             var count = 0;
             foreach (Pawn activePawn in group.ActivePawns.Where(pawn => group.formations?.ContainsKey(pawn) ?? false))
             {
-                Job job = JobMaker.MakeJob(JobDefOf.Goto, group.formations[activePawn]);
+                var job = JobMaker.MakeJob(JobDefOf.Goto, group.formations[activePawn]);
                 job.locomotionUrgency = LocomotionUrgency.Sprint;
                 activePawn.jobs.TryTakeOrderedJob(job);
                 count++;
