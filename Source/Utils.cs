@@ -45,7 +45,7 @@ namespace ColonyGroupsHotkeys
             {
                 return null;
             }
-            return groups[groups.Count - index];
+            return groups[(groups.Count - 1) - index];
         }
 
         public static void ActOnPawnGroup(int index, Action<ColonistGroup> action) => ActOnPawnGroup(index, action, (_) => { });
