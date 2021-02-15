@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <ColGrpHotkeys_msg_drafted>Drafted {0} pawns.</ColGrpHotkeys_msg_drafted>
+    <ColGrpHotkeys_msg_alreadyDrafted>All pawns are already drafted.</ColGrpHotkeys_msg_alreadyDrafted>
+    <ColGrpHotkeys_msg_undrafted>Undrafted {0} pawns.</ColGrpHotkeys_msg_undrafted>
+    <ColGrpHotkeys_msg_alreadyUndrafted>All pawns are already undrafted.</ColGrpHotkeys_msg_alreadyUndrafted>
+    <ColGrpHotkeys_msg_selectedGroup>Selected group "{0}."</ColGrpHotkeys_msg_selectedGroup>
+    <ColGrpHotkeys_msg_battleStations>Sending {0} pawns to battle stations.</ColGrpHotkeys_msg_battleStations>
+    <ColGrpHotkeys_msg_noBattleStations>No battle stations set.</ColGrpHotkeys_msg_noBattleStations>
+    <ColGrpHotkeys_msg_noSelection>No pawns selected.</ColGrpHotkeys_msg_noSelection>
+    <ColGrpHotkeys_msg_groupUpdated>Updated group "{0}" with {1} pawns.</ColGrpHotkeys_msg_groupUpdated>
+    <ColGrpHotkeys_msg_groupCreated>Created new group "{0}" with {1} pawns.</ColGrpHotkeys_msg_groupCreated>
+    <ColGrpHotkeys_msg_groupOutOfBounds>Can't create pawn group at index {0}; the next free group index is {1}.</ColGrpHotkeys_msg_groupOutOfBounds>
+
+    <ColGrpHotkeys_Modifier_Disabled>Disabled</ColGrpHotkeys_Modifier_Disabled>
+    <ColGrpHotkeys_Modifier_Shift>Shift</ColGrpHotkeys_Modifier_Shift>
+    <ColGrpHotkeys_Modifier_Alt>Alt</ColGrpHotkeys_Modifier_Alt>
+    <ColGrpHotkeys_Modifier_Control>Control</ColGrpHotkeys_Modifier_Control>
+    <ColGrpHotkeys_Modifier_ShiftAlt>Shift + Alt</ColGrpHotkeys_Modifier_ShiftAlt>
+    <ColGrpHotkeys_Modifier_ShiftControl>Shift + Control</ColGrpHotkeys_Modifier_ShiftControl>
+    <ColGrpHotkeys_Modifier_ControlAlt>Control + Alt</ColGrpHotkeys_Modifier_ControlAlt>
+    <ColGrpHotkeys_Modifier_ShiftControlAlt>Shift + Control + Alt</ColGrpHotkeys_Modifier_ShiftControlAlt>
+
+    <ColGrpHotkeys_settings>Colony Groups Hotkeys</ColGrpHotkeys_settings>
+
+    <ColGrpHotkeys_settings_beQuiet_title>Don't display action messages</ColGrpHotkeys_settings_beQuiet_title>
+    <ColGrpHotkeys_settings_beQuiet_desc>Don't describe hotkey actions in the game log unless they fail.</ColGrpHotkeys_settings_beQuiet_desc>
+
+    <ColGrpHotkeys_settings_options>Options</ColGrpHotkeys_settings_options>
+    <ColGrpHotkeys_settings_modifiers>Modifiers</ColGrpHotkeys_settings_modifiers>
+
+    <ColGrpHotkeys_settings_groupSetModifier_title>Group set modifier</ColGrpHotkeys_settings_groupSetModifier_title>
+    <ColGrpHotkeys_settings_groupSetModifier_desc>Modifier key to set a pawn group's membership to the current selection, or to create a new group.</ColGrpHotkeys_settings_groupSetModifier_desc>
+
+    <ColGrpHotkeys_settings_groupDraftModifier_title>Group draft modifier</ColGrpHotkeys_settings_groupDraftModifier_title>
+    <ColGrpHotkeys_settings_groupDraftModifier_desc>Modifier key to draft a pawn group.</ColGrpHotkeys_settings_groupDraftModifier_desc>
+
+    <ColGrpHotkeys_settings_groupUndraftModifier_title>Group undraft modifier</ColGrpHotkeys_settings_groupUndraftModifier_title>
+    <ColGrpHotkeys_settings_groupUndraftModifier_desc>Modifier key to undraft a pawn group.</ColGrpHotkeys_settings_groupUndraftModifier_desc>
+
+    <ColGrpHotkeys_settings_groupBattleStationsModifier_title>Group battle stations modifier</ColGrpHotkeys_settings_groupBattleStationsModifier_title>
+    <ColGrpHotkeys_settings_groupBattleStationsModifier_desc>Modifier key to send a pawn group to its battle stations.</ColGrpHotkeys_settings_groupBattleStationsModifier_desc>
+</LanguageData>

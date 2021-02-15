@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectCurrentColony</defName>
+        <label>Select pawns in current colony</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>DraftCurrentColony</defName>
+        <label>Draft pawns in current colony</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>UndraftCurrentColony</defName>
+        <label>Undraft pawns in current colony</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>BattleStationsCurrentColony</defName>
+        <label>Send all pawns to battle stations</label>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup1</defName>
+        <label>Select pawn group 1</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup2</defName>
+        <label>Select pawn group 2</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup3</defName>
+        <label>Select pawn group 3</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup4</defName>
+        <label>Select pawn group 4</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup5</defName>
+        <label>Select pawn group 5</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup6</defName>
+        <label>Select pawn group 6</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup7</defName>
+        <label>Select pawn group 7</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup8</defName>
+        <label>Select pawn group 8</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup9</defName>
+        <label>Select pawn group 9</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup10</defName>
+        <label>Select pawn group 10</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup11</defName>
+        <label>Select pawn group 11</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectGroup12</defName>
+        <label>Select pawn group 12</label>
+    </KeyBindingDef>
+</Defs>

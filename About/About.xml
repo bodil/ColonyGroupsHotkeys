@@ -1,0 +1,26 @@
+<ModMetaData>
+    <name>Colony Groups Hotkeys</name>
+    <author>Bodil Stokke</author>
+    <packageId>bodilpwnz.ColonyGroupsHotkeys</packageId>
+    <supportedVersions>
+        <li>1.2</li>
+    </supportedVersions>
+    <description>This mod adds keyboard shortcuts to the [LTO] Colony Groups mod for selecting pawn groups, drafting and undrafting them, etc.</description>
+    <url>https://steamcommunity.com/id/bodilpwnz/myworkshopfiles/?appid=294100</url>
+    <modDependencies>
+        <li>
+            <packageId>brrainz.harmony</packageId>
+            <displayName>Harmony</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+            <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+        </li>
+        <li>
+            <packageId>DerekBickley.LTOColonyGroupsFinal</packageId>
+            <displayName>[LTO] Colony Groups</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/2345493945</steamWorkshopUrl>
+        </li>
+    </modDependencies>
+    <loadAfter>
+        <li>DerekBickley.LTOColonyGroupsFinal</li>
+    </loadAfter>
+</ModMetaData>

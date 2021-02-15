@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+    <KeyBindingCategoryDef>
+        <defName>ColonyGroupsShortcuts</defName>
+        <label>Colony Groups</label>
+        <description>Shortcuts for Colony Groups.</description>
+    </KeyBindingCategoryDef>
+</Defs>
