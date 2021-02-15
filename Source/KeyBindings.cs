@@ -24,9 +24,8 @@ namespace ColonyGroupsHotkeys
         public static KeyBindingDef? SelectGroup11;
         public static KeyBindingDef? SelectGroup12;
 
-        public static List<KeyBindingDef?> PawnGroupKeys()
-        {
-            KeyBindingDef?[] keys = {
+        public static List<KeyBindingDef?> PawnGroupKeys() =>
+            new List<KeyBindingDef?> {
                 SelectGroup1,
                 SelectGroup2,
                 SelectGroup3,
@@ -39,8 +38,8 @@ namespace ColonyGroupsHotkeys
                 SelectGroup10,
                 SelectGroup11,
                 SelectGroup12,
+
             };
-            return new List<KeyBindingDef?>(keys);
-        }
+
     }
 }

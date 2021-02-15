@@ -1,41 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Verse;
 
 namespace ColonyGroupsHotkeys
 {
-    public static class Extensions
-    {
-        public static TaggedString Translate(this Modifier mod)
-        {
-            return Utils.EnumTranslationKey(mod).Translate();
-        }
-
-        public static bool MatchModifier(this Modifier mod, EventModifiers modifiers)
-        {
-            switch (mod)
-            {
-                case Modifier.Shift:
-                    return modifiers == EventModifiers.Shift;
-                case Modifier.Alt:
-                    return modifiers == EventModifiers.Alt;
-                case Modifier.Control:
-                    return modifiers == EventModifiers.Control;
-                case Modifier.ShiftAlt:
-                    return modifiers == (EventModifiers.Shift | EventModifiers.Alt);
-                case Modifier.ShiftControl:
-                    return modifiers == (EventModifiers.Shift | EventModifiers.Control);
-                case Modifier.ControlAlt:
-                    return modifiers == (EventModifiers.Control | EventModifiers.Alt);
-                case Modifier.ShiftControlAlt:
-                    return modifiers == (EventModifiers.Shift | EventModifiers.Control | EventModifiers.Alt);
-                default: return false;
-            }
-        }
-
-    }
-
     public enum Modifier { Disabled, Shift, Control, Alt, ShiftAlt, ShiftControl, ControlAlt, ShiftControlAlt }
 
     public class Settings : ModSettings
@@ -88,25 +58,17 @@ namespace ColonyGroupsHotkeys
             if (groupSetModifier == mod) groupSetModifier = Modifier.Disabled;
         }
 
-        private static List<FloatMenuOption> EnumSelector<A>(Action<A> action) where A : Enum
-        {
-            var options = new List<FloatMenuOption>();
-            foreach (int item in Enum.GetValues(typeof(A)))
-            {
-                options.Add(new FloatMenuOption(("ColGrpHotkeys_" + typeof(A).Name + "_" + Enum.GetName(typeof(A), item)).Translate(), delegate
-                {
-                    action((A)Enum.ToObject(typeof(A), item));
-                }));
-            }
-            return options;
-        }
+        private static List<FloatMenuOption> EnumSelector<A>(Action<A> action) where A : Enum =>
+            ((IEnumerable<int>)Enum.GetValues(typeof(A))).Select(
+                item => new FloatMenuOption($"ColGrpHotkeys_{typeof(A).Name}_{Enum.GetName(typeof(A), item)}".Translate(),
+                    () => action((A)Enum.ToObject(typeof(A), item)))
+            ).ToList();
 
         public static void EnumButton<A>(Listing_Standard list, TaggedString label, A value, Action<A> update) where A : Enum
         {
             if (list.ButtonTextLabeled(label, Utils.EnumTranslationKey<A>(value).Translate()))
             {
-                FloatMenu dropdown = new FloatMenu(EnumSelector<A>(update)) { vanishIfMouseDistant = true };
-                Find.WindowStack.Add(dropdown);
+                Find.WindowStack.Add(new FloatMenu(EnumSelector<A>(update)) { vanishIfMouseDistant = true });
             }
         }
 
@@ -136,7 +98,6 @@ namespace ColonyGroupsHotkeys
             EnumButton(list, "ColGrpHotkeys_settings_groupBattleStationsModifier_title".Translate(), groupBattleStationsModifier, SetGroupBattleStationsModifier);
 
             list.End();
-
         }
     }
 }
