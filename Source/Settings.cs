@@ -10,7 +10,10 @@ namespace ColonyGroupsHotkeys
 
     public class Settings : ModSettings
     {
+        public bool worldMapGroups;
+        public bool stayOnWorldMap;
         public bool beQuiet;
+        public Modifier groupColonyModifier;
         public Modifier groupSetModifier;
         public Modifier groupDraftModifier;
         public Modifier groupUndraftModifier;
@@ -18,7 +21,10 @@ namespace ColonyGroupsHotkeys
 
         public override void ExposeData()
         {
+            Scribe_Values.Look(ref worldMapGroups, "worldMapGroups", false);
+            Scribe_Values.Look(ref stayOnWorldMap, "stayOnWorldMap", false);
             Scribe_Values.Look(ref beQuiet, "beQuiet", false);
+            Scribe_Values.Look(ref groupColonyModifier, "groupColonyModifier", Modifier.Disabled);
             Scribe_Values.Look(ref groupSetModifier, "groupSetModifier", Modifier.Disabled);
             Scribe_Values.Look(ref groupDraftModifier, "groupDraftModifier", Modifier.Disabled);
             Scribe_Values.Look(ref groupUndraftModifier, "groupUndraftModifier", Modifier.Disabled);
@@ -26,9 +32,19 @@ namespace ColonyGroupsHotkeys
             base.ExposeData();
         }
 
+        public void SetGroupColonyModifier(Modifier mod)
+        {
+            groupColonyModifier = mod;
+            if (groupSetModifier == mod) groupSetModifier = Modifier.Disabled;
+            if (groupDraftModifier == mod) groupDraftModifier = Modifier.Disabled;
+            if (groupUndraftModifier == mod) groupUndraftModifier = Modifier.Disabled;
+            if (groupBattleStationsModifier == mod) groupBattleStationsModifier = Modifier.Disabled;
+        }
+
         public void SetGroupSetModifier(Modifier mod)
         {
             groupSetModifier = mod;
+            if (groupColonyModifier == mod) groupColonyModifier = Modifier.Disabled;
             if (groupDraftModifier == mod) groupDraftModifier = Modifier.Disabled;
             if (groupUndraftModifier == mod) groupUndraftModifier = Modifier.Disabled;
             if (groupBattleStationsModifier == mod) groupBattleStationsModifier = Modifier.Disabled;
@@ -37,6 +53,7 @@ namespace ColonyGroupsHotkeys
         public void SetGroupDraftModifier(Modifier mod)
         {
             groupDraftModifier = mod;
+            if (groupColonyModifier == mod) groupColonyModifier = Modifier.Disabled;
             if (groupSetModifier == mod) groupSetModifier = Modifier.Disabled;
             if (groupUndraftModifier == mod) groupUndraftModifier = Modifier.Disabled;
             if (groupBattleStationsModifier == mod) groupBattleStationsModifier = Modifier.Disabled;
@@ -45,6 +62,7 @@ namespace ColonyGroupsHotkeys
         public void SetGroupUndraftModifier(Modifier mod)
         {
             groupUndraftModifier = mod;
+            if (groupColonyModifier == mod) groupColonyModifier = Modifier.Disabled;
             if (groupDraftModifier == mod) groupDraftModifier = Modifier.Disabled;
             if (groupSetModifier == mod) groupSetModifier = Modifier.Disabled;
             if (groupBattleStationsModifier == mod) groupBattleStationsModifier = Modifier.Disabled;
@@ -53,6 +71,7 @@ namespace ColonyGroupsHotkeys
         public void SetGroupBattleStationsModifier(Modifier mod)
         {
             groupBattleStationsModifier = mod;
+            if (groupColonyModifier == mod) groupColonyModifier = Modifier.Disabled;
             if (groupDraftModifier == mod) groupDraftModifier = Modifier.Disabled;
             if (groupUndraftModifier == mod) groupUndraftModifier = Modifier.Disabled;
             if (groupSetModifier == mod) groupSetModifier = Modifier.Disabled;
@@ -85,6 +104,8 @@ namespace ColonyGroupsHotkeys
             list.Label("ColGrpHotkeys_settings_options".Translate());
             Text.Font = GameFont.Small;
             list.GapLine();
+            list.CheckboxLabeled("ColGrpHotkeys_settings_worldMapGroups_title".Translate(), ref worldMapGroups, "ColGrpHotkeys_settings_worldMapGroups_desc".Translate());
+            list.CheckboxLabeled("ColGrpHotkeys_settings_stayOnWorldMap_title".Translate(), ref stayOnWorldMap, "ColGrpHotkeys_settings_stayOnWorldMap_desc".Translate());
             list.CheckboxLabeled("ColGrpHotkeys_settings_beQuiet_title".Translate(), ref beQuiet, "ColGrpHotkeys_settings_beQuiet_desc".Translate());
 
             list.NewColumn();
@@ -92,6 +113,7 @@ namespace ColonyGroupsHotkeys
             list.Label("ColGrpHotkeys_settings_modifiers".Translate());
             Text.Font = GameFont.Small;
             list.GapLine();
+            EnumButton(list, "ColGrpHotkeys_settings_groupColonyModifier_title".Translate(), groupColonyModifier, SetGroupColonyModifier);
             EnumButton(list, "ColGrpHotkeys_settings_groupSetModifier_title".Translate(), groupSetModifier, SetGroupSetModifier);
             EnumButton(list, "ColGrpHotkeys_settings_groupDraftModifier_title".Translate(), groupDraftModifier, SetGroupDraftModifier);
             EnumButton(list, "ColGrpHotkeys_settings_groupUndraftModifier_title".Translate(), groupUndraftModifier, SetGroupUndraftModifier);

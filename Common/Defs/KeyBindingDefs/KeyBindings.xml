@@ -19,7 +19,68 @@
     <KeyBindingDef>
         <category>ColonyGroupsShortcuts</category>
         <defName>BattleStationsCurrentColony</defName>
-        <label>Send all pawns to battle stations</label>
+        <label>Send current colony to battle stations</label>
+    </KeyBindingDef>
+
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony1</defName>
+        <label>Select colony 1</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony2</defName>
+        <label>Select colony 2</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony3</defName>
+        <label>Select colony 3</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony4</defName>
+        <label>Select colony 4</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony5</defName>
+        <label>Select colony 5</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony6</defName>
+        <label>Select colony 6</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony7</defName>
+        <label>Select colony 7</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony8</defName>
+        <label>Select colony 8</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony9</defName>
+        <label>Select colony 9</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony10</defName>
+        <label>Select colony 10</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony11</defName>
+        <label>Select colony 11</label>
+    </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>SelectColony12</defName>
+        <label>Select colony 12</label>
     </KeyBindingDef>
 
     <KeyBindingDef>

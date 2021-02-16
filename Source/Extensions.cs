@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using RimWorld;
+using RimWorld.Planet;
 using TacticalGroups;
 using UnityEngine;
 using Verse;
@@ -33,14 +34,43 @@ namespace ColonyGroupsHotkeys
 
         public static void SelectGroup(this ColonistGroup group)
         {
-            group.SelectAll();
+            if (group is ColonyGroup colonyGroup)
+            {
+                if (ColonyGroupsHotkeys.Instance?.settings.stayOnWorldMap == true && WorldRendererUtility.WorldRenderedNow)
+                {
+                    CameraJumper.TryJumpAndSelect(CameraJumper.GetWorldTargetOfMap(colonyGroup.Map));
+                }
+                else
+                {
+                    var flag = CameraJumper.TryHideWorld();
+                    if (Find.CurrentMap != colonyGroup.Map)
+                    {
+                        Current.Game.CurrentMap = colonyGroup.Map;
+                        if (!flag)
+                        {
+                            SoundDefOf.MapSelected.PlayOneShotOnCamera();
+                        }
+                    }
+                    group.SelectAll();
+                }
+            }
+            else if (group is CaravanGroup caravanGroup)
+            {
+                // CaravanGroup doesn't expose the Caravan object, so get it through the group's first pawn.
+                var caravan = caravanGroup.pawns[0].GetCaravan();
+                CameraJumper.TryJumpAndSelect(caravan);
+            }
+            else
+            {
+                group.SelectAll();
+            }
             Utils.Message("ColGrpHotkeys_msg_selectedGroup".Translate(group.curGroupName));
         }
 
         public static void DraftGroup(this ColonistGroup group) => DraftGroup(group, true);
-
         public static void DraftGroup(this ColonistGroup group, bool withMessages = true)
         {
+            group.SelectGroup();
             var drafted = group.CountPred(pawn => pawn.drafter.Drafted);
             group.Draft();
             var newlyDrafted = group.CountPred(pawn => pawn.drafter.Drafted) - drafted;
@@ -55,7 +85,6 @@ namespace ColonyGroupsHotkeys
                 if (withMessages)
                     Utils.Error("ColGrpHotkeys_msg_alreadyDrafted".Translate());
             }
-            group.SelectAll();
         }
 
         public static void UndraftGroup(this ColonistGroup group)
@@ -94,7 +123,7 @@ namespace ColonyGroupsHotkeys
             }
         }
 
-        public static void SetGroupToCurrentSelection(this ColonistGroup group)
+        public static void SetGroupToCurrentSelection(this PawnGroup group)
         {
             var selectedPawns = Find.Selector.SelectedPawns;
             if (selectedPawns.Count == 0)

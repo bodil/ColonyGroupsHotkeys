@@ -1,20 +1,16 @@
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using RimWorld;
 using TacticalGroups;
 using Verse;
-using Verse.AI;
-using Verse.Sound;
 
 namespace ColonyGroupsHotkeys
 {
     public static class Utils
     {
-        public static string EnumTranslationKey<A>(A value) where A : Enum
-        {
-            return "ColGrpHotkeys_" + typeof(A).Name + "_" + Enum.GetName(typeof(A), value);
-        }
+        public static string EnumTranslationKey<A>(A value) where A : Enum =>
+            $"ColGrpHotkeys_{typeof(A).Name}_{Enum.GetName(typeof(A), value)}";
 
         public static void Message(TaggedString message)
         {
@@ -22,15 +18,15 @@ namespace ColonyGroupsHotkeys
                 Messages.Message(message, MessageTypeDefOf.SilentInput);
         }
 
-        public static void Error(TaggedString message)
-        {
-            Messages.Message(message, MessageTypeDefOf.RejectInput);
-        }
+        public static void Error(TaggedString message) => Messages.Message(message, MessageTypeDefOf.RejectInput);
 
-        public static ColonyGroup? GetCurrentColonyGroup()
-        {
-            return TacticUtils.AllColonyGroups.FirstOrDefault(colony => colony.Map == Find.CurrentMap);
-        }
+        public static ColonyGroup? GetCurrentColonyGroup() =>
+            TacticUtils.AllColonyGroups.FirstOrDefault(colony => colony.Map == Find.CurrentMap);
+
+        public static ColonistGroup? GetColonyGroupByIndex(int index) =>
+             TacticUtils.AllColonyGroups.Select(group => (ColonistGroup)group)
+                   .Concat(TacticUtils.AllCaravanGroups.Select(group => (ColonistGroup)group))
+                   .ElementAtOrDefault(index);
 
         public static PawnGroup? GetActivePawnGroupByIndex(int index)
         {
@@ -48,11 +44,16 @@ namespace ColonyGroupsHotkeys
             return groups[(groups.Count - 1) - index];
         }
 
-        public static void ActOnPawnGroup(int index, Action<ColonistGroup> action) => ActOnPawnGroup(index, action, (_) => { });
+        public static void ActOnPawnGroup(int index, Action<PawnGroup> action) => ActOnPawnGroup(index, action, (_) => { });
 
-        public static void ActOnPawnGroup(int index, Action<ColonistGroup> action, Action<int> empty)
+        public static void ActOnPawnGroup(int index, Action<PawnGroup> action, Action<int> empty)
         {
             if (GetActivePawnGroupByIndex(index) is { } group) { action(group); } else { empty(index); }
+        }
+
+        public static void ActOnColonyGroup(int index, Action<ColonistGroup> action)
+        {
+            if (GetColonyGroupByIndex(index) is { } group) { action(group); }
         }
 
         public static void CreateGroup(int index)
@@ -71,10 +72,7 @@ namespace ColonyGroupsHotkeys
                 Error("ColGrpHotkeys_msg_groupOutOfBounds".Translate(index + 1, groups.Count + 1));
                 return;
             }
-            if (index < groups.Count)
-            {
-                throw new Exception("oh no.");
-            }
+            Debug.Assert(index == groups.Count);
             TacticUtils.TacticalGroups.AddGroup(selected);
             var group = TacticUtils.TacticalGroups.pawnGroups[0];
             Message("ColGrpHotkeys_msg_groupCreated".Translate(group.curGroupName, group.pawns.Count));
