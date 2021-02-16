@@ -11,6 +11,9 @@ namespace ColonyGroupsHotkeys
         public static KeyBindingDef? DraftCurrentColony;
         public static KeyBindingDef? UndraftCurrentColony;
         public static KeyBindingDef? BattleStationsCurrentColony;
+
+        public static KeyBindingDef? BattleStationsAction;
+
         public static KeyBindingDef? SelectColony1;
         public static KeyBindingDef? SelectColony2;
         public static KeyBindingDef? SelectColony3;
@@ -23,6 +26,7 @@ namespace ColonyGroupsHotkeys
         public static KeyBindingDef? SelectColony10;
         public static KeyBindingDef? SelectColony11;
         public static KeyBindingDef? SelectColony12;
+
         public static KeyBindingDef? SelectGroup1;
         public static KeyBindingDef? SelectGroup2;
         public static KeyBindingDef? SelectGroup3;

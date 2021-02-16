@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <JobDef>
+        <defName>ColGrpHotkeys_Job_ToBattleStations</defName>
+        <driverClass>ColonyGroupsHotkeys.JobDriver_ToBattleStations</driverClass>
+        <reportString>Moving to battle stations</reportString>
+        <alwaysShowWeapon>true</alwaysShowWeapon>
+        <casualInterruptible>false</casualInterruptible>
+        <playerInterruptible>false</playerInterruptible>
+    </JobDef>
+</Defs>

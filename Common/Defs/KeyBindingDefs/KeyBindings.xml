@@ -21,6 +21,11 @@
         <defName>BattleStationsCurrentColony</defName>
         <label>Send current colony to battle stations</label>
     </KeyBindingDef>
+    <KeyBindingDef>
+        <category>ColonyGroupsShortcuts</category>
+        <defName>BattleStationsAction</defName>
+        <label>Send pawn to battle stations</label>
+    </KeyBindingDef>
 
     <KeyBindingDef>
         <category>ColonyGroupsShortcuts</category>

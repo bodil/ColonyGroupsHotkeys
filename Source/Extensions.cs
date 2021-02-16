@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using RimWorld.Planet;
@@ -27,6 +28,35 @@ namespace ColonyGroupsHotkeys
             Modifier.ShiftControlAlt => modifiers == (EventModifiers.Shift | EventModifiers.Control | EventModifiers.Alt),
             _ => false
         };
+
+        // Pawn methods
+
+        public static ColonistGroup? GetPawnOrColonyGroup(this Pawn pawn) =>
+            TacticUtils.AllPawnGroups.Select(group => (ColonistGroup)group).Concat(TacticUtils.AllColonyGroups.Select(group => (ColonistGroup)group)).Where(group => group.pawns.Contains(pawn)).FirstOrDefault();
+
+        public static IntVec3? GetBattleStation(this Pawn pawn, ColonistGroup? group = null)
+        {
+            try
+            {
+                return (group ?? pawn.GetPawnOrColonyGroup())?.formations?[pawn];
+            }
+            catch (KeyNotFoundException)
+            {
+                return null;
+            }
+        }
+
+        public static bool ToBattleStations(this Pawn pawn, ColonistGroup? group = null)
+        {
+            if (pawn.GetBattleStation(group) is IntVec3 position)
+            {
+                return pawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(Jobs.ColGrpHotkeys_Job_ToBattleStations, position), JobTag.DraftedOrder);
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         // TacticalGroups.ColonistGroup methods
 
@@ -67,8 +97,7 @@ namespace ColonyGroupsHotkeys
             Utils.Message("ColGrpHotkeys_msg_selectedGroup".Translate(group.curGroupName));
         }
 
-        public static void DraftGroup(this ColonistGroup group) => DraftGroup(group, true);
-        public static void DraftGroup(this ColonistGroup group, bool withMessages = true)
+        public static void DraftGroup(this ColonistGroup group)
         {
             group.SelectGroup();
             var drafted = group.CountPred(pawn => pawn.drafter.Drafted);
@@ -77,13 +106,11 @@ namespace ColonyGroupsHotkeys
             if (newlyDrafted > 0)
             {
                 TacticDefOf.TG_BattleStationsSFX.PlayOneShotOnCamera();
-                if (withMessages)
-                    Utils.Message("ColGrpHotkeys_msg_drafted".Translate(newlyDrafted));
+                Utils.Message("ColGrpHotkeys_msg_drafted".Translate(newlyDrafted));
             }
             else
             {
-                if (withMessages)
-                    Utils.Error("ColGrpHotkeys_msg_alreadyDrafted".Translate());
+                Utils.Error("ColGrpHotkeys_msg_alreadyDrafted".Translate());
             }
         }
 
@@ -104,17 +131,11 @@ namespace ColonyGroupsHotkeys
 
         public static void ToBattleStations(this ColonistGroup group)
         {
-            DraftGroup(group, false);
-            var count = 0;
-            foreach (Pawn activePawn in group.ActivePawns.Where(pawn => group.formations?.ContainsKey(pawn) ?? false))
-            {
-                var job = JobMaker.MakeJob(JobDefOf.Goto, group.formations[activePawn]);
-                job.locomotionUrgency = LocomotionUrgency.Sprint;
-                activePawn.jobs.TryTakeOrderedJob(job);
-                count++;
-            }
+            group.SelectGroup();
+            var count = group.ActivePawns.Select(pawn => pawn.ToBattleStations()).Where(flag => flag).Count();
             if (count > 0)
             {
+                TacticDefOf.TG_BattleStationsSFX.PlayOneShotOnCamera();
                 Utils.Message("ColGrpHotkeys_msg_battleStations".Translate(count));
             }
             else

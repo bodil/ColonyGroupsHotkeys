@@ -12,6 +12,9 @@
     <ColGrpHotkeys_msg_groupCreated>Created new group "{0}" with {1} pawns.</ColGrpHotkeys_msg_groupCreated>
     <ColGrpHotkeys_msg_groupOutOfBounds>Can't create pawn group at index {0}; the next free group index is {1}.</ColGrpHotkeys_msg_groupOutOfBounds>
 
+    <ColGrpHotkeys_gizmo_battleStations_label>Battle Stations</ColGrpHotkeys_gizmo_battleStations_label>
+    <ColGrpHotkeys_gizmo_battleStations_desc>Send this pawn to their assigned battle position.</ColGrpHotkeys_gizmo_battleStations_desc>
+
     <ColGrpHotkeys_Modifier_Disabled>Disabled</ColGrpHotkeys_Modifier_Disabled>
     <ColGrpHotkeys_Modifier_Shift>Shift</ColGrpHotkeys_Modifier_Shift>
     <ColGrpHotkeys_Modifier_Alt>Alt</ColGrpHotkeys_Modifier_Alt>
