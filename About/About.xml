@@ -7,6 +7,7 @@
     </supportedVersions>
     <description>This mod adds keyboard shortcuts to the [LTO] Colony Groups mod for selecting pawn groups, drafting and undrafting them, etc.</description>
     <url>https://steamcommunity.com/id/bodilpwnz/myworkshopfiles/?appid=294100</url>
+    <downloadUrl>https://github.com/bodil/ColonyGroupsHotkeys</downloadUrl>
     <modDependencies>
         <li>
             <packageId>brrainz.harmony</packageId>
