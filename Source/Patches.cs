@@ -34,27 +34,29 @@ namespace ColonyGroupsHotkeys.Patches
     [HarmonyPatch(typeof(Pawn_DraftController), "GetGizmos")]
     internal static class DraftController_GetGizmos_Patch
     {
-        [HarmonyPostfix]
-        public static void InsertBattleStationsGizmo(Pawn_DraftController __instance, ref IEnumerable<Gizmo> __result)
+        static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> values, Pawn_DraftController __instance)
         {
             var pawn = __instance.pawn;
             if (pawn.GetBattleStation() == null)
             {
-                return;
+                foreach (var gizmo in values) { yield return gizmo; }
             }
-            var gizmos = __result.ToList();
-            (var draft, var draftIndex) = gizmos.Select((gizmo, index) => (gizmo as Command_Toggle, index)).Where(item => item.Item1 != null && item.Item1.icon == TexCommand.Draft).FirstOrDefault();
-            var insertAtIndex = gizmos.Count > 0 ? 1 : 0;
-            var draftAllowed = true;
-            if (draft != null)
+            else
             {
-                draftAllowed = !draft.disabled;
-                insertAtIndex = draftIndex + 1;
-            }
-            if (draftAllowed)
-            {
-                gizmos.Insert(insertAtIndex, Gizmo_BattleStationsButton.MakeGizmo(pawn));
-                __result = gizmos;
+                var newGizmos = values.ToList();
+                (var draft, var draftIndex) = values.Select((gizmo, index) => (gizmo as Command_Toggle, index)).Where(item => item.Item1 != null && item.Item1.icon == TexCommand.Draft).FirstOrDefault();
+                var insertAtIndex = newGizmos.Count > 0 ? 1 : 0;
+                var draftAllowed = true;
+                if (draft != null)
+                {
+                    draftAllowed = !draft.disabled;
+                    insertAtIndex = draftIndex + 1;
+                }
+                if (draftAllowed)
+                {
+                    newGizmos.Insert(insertAtIndex, Gizmo_BattleStationsButton.MakeGizmo(pawn));
+                }
+                foreach (var gizmo in newGizmos) { yield return gizmo; }
             }
         }
     }
