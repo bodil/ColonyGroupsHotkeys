@@ -38,7 +38,7 @@ namespace ColonyGroupsHotkeys
         {
             try
             {
-                return (group ?? pawn.GetPawnOrColonyGroup())?.formations?[pawn];
+                return (group ?? pawn.GetPawnOrColonyGroup())?.formations?[0]?.formations?[pawn];
             }
             catch (KeyNotFoundException)
             {
