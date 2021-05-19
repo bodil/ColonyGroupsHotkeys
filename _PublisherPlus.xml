@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration>
-  <Excluded>
-    <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\Colony Group Hotkeys\.git</exclude>
-    <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\Colony Group Hotkeys\.vscode</exclude>
-    <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\Colony Group Hotkeys\Common\Assemblies\ColonyGroupsHotkeys.pdb</exclude>
-    <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\Colony Group Hotkeys\Source</exclude>
-  </Excluded>
+    <Excluded>
+        <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\ColonyGroupsHotkeys\.git</exclude>
+        <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\ColonyGroupsHotkeys\.vscode</exclude>
+        <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\ColonyGroupsHotkeys\Common\Assemblies\ColonyGroupsHotkeys.pdb</exclude>
+        <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\ColonyGroupsHotkeys\Source</exclude>
+        <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\ColonyGroupsHotkeys\steam</exclude>
+    </Excluded>
 </Configuration>
