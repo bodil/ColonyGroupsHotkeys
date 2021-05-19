@@ -44,6 +44,10 @@ namespace ColonyGroupsHotkeys
             {
                 return null;
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                return null;
+            }
         }
 
         public static bool ToBattleStations(this Pawn pawn, ColonistGroup? group = null)

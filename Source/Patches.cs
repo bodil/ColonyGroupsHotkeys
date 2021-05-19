@@ -37,13 +37,9 @@ namespace ColonyGroupsHotkeys.Patches
         static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> values, Pawn_DraftController __instance)
         {
             var pawn = __instance.pawn;
-            if (pawn.GetBattleStation() == null)
+            var newGizmos = values.ToList();
+            if (pawn?.GetBattleStation() != null)
             {
-                foreach (var gizmo in values) { yield return gizmo; }
-            }
-            else
-            {
-                var newGizmos = values.ToList();
                 (var draft, var draftIndex) = values.Select((gizmo, index) => (gizmo as Command_Toggle, index)).Where(item => item.Item1 != null && item.Item1.icon == TexCommand.Draft).FirstOrDefault();
                 var insertAtIndex = newGizmos.Count > 0 ? 1 : 0;
                 var draftAllowed = true;
@@ -56,8 +52,8 @@ namespace ColonyGroupsHotkeys.Patches
                 {
                     newGizmos.Insert(insertAtIndex, Gizmo_BattleStationsButton.MakeGizmo(pawn));
                 }
-                foreach (var gizmo in newGizmos) { yield return gizmo; }
             }
+            foreach (var gizmo in newGizmos) { yield return gizmo; }
         }
     }
 }
