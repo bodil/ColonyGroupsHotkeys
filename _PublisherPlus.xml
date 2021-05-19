@@ -5,6 +5,5 @@
         <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\ColonyGroupsHotkeys\.vscode</exclude>
         <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\ColonyGroupsHotkeys\Common\Assemblies\ColonyGroupsHotkeys.pdb</exclude>
         <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\ColonyGroupsHotkeys\Source</exclude>
-        <exclude>C:\Games\Steam\steamapps\common\RimWorld\Mods\ColonyGroupsHotkeys\steam</exclude>
     </Excluded>
 </Configuration>
