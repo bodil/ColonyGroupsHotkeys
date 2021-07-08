@@ -48,7 +48,12 @@ namespace ColonyGroupsHotkeys
                     var job = JobMaker.MakeJob(JobDefOf.Goto, position);
                     job.locomotionUrgency = LocomotionUrgency.Sprint;
                     pawn.jobs.TryTakeOrderedJob(job, JobTag.DraftedOrder);
+#if RIMWORLD_1_2
+                    // MoteMaker.MakeStaticMote(position, pawn.Map, ThingDefOf.Mote_FeedbackGoto);
                     MoteMaker.MakeStaticMote(position, pawn.Map, ThingDefOf.Mote_FeedbackGoto);
+#else
+                    MoteMaker.MakeStaticMote(position, pawn.Map, ThingDefOf.Mote_RolePositionHighlight);
+#endif
                 }
             };
             yield return toil;

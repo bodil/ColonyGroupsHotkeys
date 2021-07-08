@@ -1,2 +1,2 @@
-Common/Assemblies/*.dll
-Common/Assemblies/*.pdb
+Common/*/Assemblies/*.dll
+Common/*/Assemblies/*.pdb
