@@ -156,16 +156,10 @@ namespace ColonyGroupsHotkeys
                 Utils.Error("ColGrpHotkeys_msg_noSelection".Translate());
                 return;
             }
-            var removed = selectedPawns.Except(group.pawns).ToList();
-            foreach (var pawn in selectedPawns)
-            {
-                group.Add(pawn);
-            }
-            foreach (var pawn in removed)
-            {
-                group.Disband(pawn);
-            }
-            Utils.Message("ColGrpHotkeys_msg_groupUpdated".Translate(group.curGroupName, selectedPawns.Count));
+            group.pawns = new List<Pawn>();
+            group.pawnIcons.Clear();
+            group.Add(selectedPawns);
+            Utils.Message("ColGrpHotkeys_msg_groupUpdated".Translate(group.curGroupName, group.pawns.Count));
         }
 
     }
