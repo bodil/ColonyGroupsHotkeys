@@ -77,5 +77,27 @@ namespace ColonyGroupsHotkeys
             var group = TacticUtils.TacticalGroups.pawnGroups[0];
             Message("ColGrpHotkeys_msg_groupCreated".Translate(group.curGroupName, group.pawns.Count));
         }
+
+        private static int pawnCycleIndex = -1;
+
+        public static bool SelectOrJumpToGroup(ColonistGroup group)
+        {
+            if (Find.Selector.SelectedPawns.SequenceEqual(group.pawns))
+            {
+                pawnCycleIndex += 1;
+                if (pawnCycleIndex >= group.pawns.Count)
+                {
+                    pawnCycleIndex = 0;
+                }
+                Verse.CameraJumper.TryJump(group.pawns[pawnCycleIndex]);
+                return false;
+            }
+            else
+            {
+                pawnCycleIndex = -1;
+                group.SelectAll();
+                return true;
+            }
+        }
     }
 }

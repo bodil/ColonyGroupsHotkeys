@@ -72,7 +72,7 @@ namespace ColonyGroupsHotkeys
             {
                 if (ColonyGroupsHotkeys.Instance?.settings.stayOnWorldMap == true && WorldRendererUtility.WorldRenderedNow)
                 {
-                    CameraJumper.TryJumpAndSelect(CameraJumper.GetWorldTargetOfMap(colonyGroup.Map));
+                    CameraJumper.TryJump(CameraJumper.GetWorldTargetOfMap(colonyGroup.Map));
                 }
                 else
                 {
@@ -85,20 +85,18 @@ namespace ColonyGroupsHotkeys
                             SoundDefOf.MapSelected.PlayOneShotOnCamera();
                         }
                     }
-                    group.SelectAll();
                 }
             }
             else if (group is CaravanGroup caravanGroup)
             {
                 // CaravanGroup doesn't expose the Caravan object, so get it through the group's first pawn.
                 var caravan = caravanGroup.pawns[0].GetCaravan();
-                CameraJumper.TryJumpAndSelect(caravan);
+                CameraJumper.TryJump(caravan);
             }
-            else
+            if (Utils.SelectOrJumpToGroup(group))
             {
-                group.SelectAll();
+                Utils.Message("ColGrpHotkeys_msg_selectedGroup".Translate(group.curGroupName));
             }
-            Utils.Message("ColGrpHotkeys_msg_selectedGroup".Translate(group.curGroupName));
         }
 
         public static void DraftGroup(this ColonistGroup group)

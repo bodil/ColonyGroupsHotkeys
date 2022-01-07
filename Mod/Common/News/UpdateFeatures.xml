@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Defs>
+    <HugsLib.UpdateFeatureDef>
+        <modIdentifier>bodilpwnz.ColonyGroupsHotkeys</modIdentifier>
+        <modNameReadable>Colony Groups Hotkeys</modNameReadable>
+        <defName>bodilpwnz.ColonyGroupsHotkeys_1_1_0</defName>
+        <assemblyVersion>1.1.0</assemblyVersion>
+        <content>Hitting a group's hotkey repeatedly will now cause the camera to cycle through the positions of the group's members.</content>
+    </HugsLib.UpdateFeatureDef>
+</Defs>
