@@ -15,8 +15,8 @@ namespace ColonyGroupsHotkeys
 
         public ColonyGroupsHotkeys(ModContentPack content) : base(content)
         {
-            this.settings = GetSettings<Settings>();
             Instance = this;
+            this.settings = GetSettings<Settings>();
         }
 
         public override void DoSettingsWindowContents(Rect inRect)

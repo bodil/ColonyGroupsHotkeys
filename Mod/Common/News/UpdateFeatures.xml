@@ -7,4 +7,11 @@
         <assemblyVersion>1.1.0</assemblyVersion>
         <content>Hitting a group's hotkey repeatedly will now cause the camera to cycle through the positions of the group's members.</content>
     </HugsLib.UpdateFeatureDef>
+    <HugsLib.UpdateFeatureDef>
+        <modIdentifier>bodilpwnz.ColonyGroupsHotkeys</modIdentifier>
+        <modNameReadable>Colony Groups Hotkeys</modNameReadable>
+        <defName>bodilpwnz.ColonyGroupsHotkeys_1_1_1</defName>
+        <assemblyVersion>1.1.1</assemblyVersion>
+        <content>Colony Groups Hotkeys has been updated to work with Rimworld version 1.4.</content>
+    </HugsLib.UpdateFeatureDef>
 </Defs>
